@@ -1,0 +1,23 @@
+body { font-family: Arial, sans-serif; }
+.clr {float:none;clear:both;font-size:0;line-height:0;height:0;border: none;}
+
+#content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    margin: 10px 0px;
+}
+
+.glove { float: left; clear: none; width:500px; }
+.glove-map canvas { display: block; z-index: 50; top: 0px; left: 0px; }
+
+.info {
+    margin: 10px 0px;
+    font-style: italic;
+}
+
+
+#gloves { float: left; clear: none; }
+#extraBox { float: left; clear: none; margin: 70px 10px 0px; }

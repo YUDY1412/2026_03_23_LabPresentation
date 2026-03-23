@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>TranNgocDuy.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="lab-paper-presentation-learning-the-signatures-of-the-human-grasp-using-a-scalable-tactile-glove"><strong>Lab Paper Presentation</strong>: Learning the signatures of the human grasp using a scalable tactile glove</h1>
+<p><strong>Presenter:</strong> Tran Ngoc Duy - M1          <strong>Presentation day:</strong> 23/03/2026  <strong>Duration:</strong> 60 minutes</p>
+<h2 id="paper-information"><strong>Paper Information</strong></h2>
+<p><strong>Author:</strong> Subramanian Sundaram, Petr Kellnhofer, Yunzhu Li, Jun-Yan &amp; Wojciech Matusik
+<strong>Affiliation:</strong> MIT (Massachusetts Institute of Technology)<br>
+<strong>Journal:</strong> Nature<br>
+<strong>Year:</strong> 2019<br>
+https://doi.org/10.1038/s41586-019-1234-z</p>
+<p align="center">
+<img src="image.png" width="600">  
+</p>
+<p align="center">
+   The STAG: a low-cost, scalable tactile glove and a platform to learn from the human grasp.
+</p>
+<h2 id="introduction"><strong>Introduction</strong></h2>
+<p><strong>Background</strong>:
+Humans possess a remarkable ability to rely on tactile sensing alone, even without visual input, to recognize objects, estimate their weight, and infer effective grasping strategies. In contrast, tactile sensing in robotics remains limited by several major challenges.</p>
+<ul>
+<li><strong>Lack of large-area tactile sensors</strong>: Tekscan Grip system, with 349 sensors, is one of the closest high-cost commercially available systems, yet it still does not fully cover the hand</li>
+<li><strong>Absence of large-scale real-world tactile datasets</strong> impeded our fundamental understanding of the human grasp.</li>
+<li><strong>Insufficient learning models that can effectively interpret tactile signals.</strong></li>
+</ul>
+<p><strong>Objective of the Paper</strong>:</p>
+<ul>
+<li>Designing a Scalable Tactile Glove (STAG) covering the entire hand</li>
+<li>Collecting a large tactile dataset</li>
+<li>Applying deep learning (CNN) to:
+<ul>
+<li>Objects Identification</li>
+<li>Object Weight Prediction</li>
+<li>The role of hand pose and the interaction between different regions of the hand</li>
+</ul>
+</li>
+</ul>
+<!-- ## **Demo and Outstanding Feature**
+<p align="center">
+<img src="Demo1.webp" width="450">
+<img src="Demo2.webp" width="450">
+</p>
+
+<p align="center">
+  Demostration of Scalable Tactile Glove (STAG) in contact with mug (on the left) and safety glasses (on the right).
+</p> -->
+<!-- ## Explanation the Concept
+- ResNet-18 
+- ImageNet25 dataset 
+- force-sensitive film
+- low-density polyethylene (LDPE) film
+- Tekscan Grip system
+- auxetic prototype
+- ResNet-18-based architecture24 that takes N input frames
+- Rectified Linear Units (ReLU)
+- N distinct clusters  -->
+<h2 id="system-design-stag-tactile-glove"><strong>System Design: STAG Tactile Glove</strong></h2>
+<!-- <p align="center">
+<img src="STAG.webp" width="200">  
+</p> -->
+<p align="center">
+<img src="Demo2.webp" width="300"> 
+<img src="Demo1.webp" width="300">
+</p>
+<p><strong>Tactile Glove Features:</strong></p>
+<ul>
+<li>The STAG can record tactile videos (with frame rate approximately 7.3 Hz)</li>
+<li>Normal forces in the range 30 mN to 0.5 N (in practical application, fingertip can generate 0.01 N to 10 N)</li>
+<li></li>
+<li>Peak hysteresis of about 17.5%</li>
+<li>Low-cost materials (around US$10) over long intervals</li>
+<li>STAG can be translated to a variety of different designs</li>
+</ul>
+<p><strong>Result:</strong></p>
+<ul>
+<li>Large-scale dataset of tactile maps (135,000 frames) recorded using the STAG while manipulating objects with a single hand.</li>
+<li>CNN trained only on tactile input can identify objects with improving accuracy as more tactile frames are provided</li>
+<li>Their CNN predicts the weights of previously unseen objects better than a simple linear baseline, achieving an average error of about 56.88 g compared with 89.68 g for the linear model</li>
+<li>Spatial coordination patterns of the human hand during grasping: strong correlations between fingertips and the thumb base, as well as cooperative patterns among distal finger regions.</li>
+<li>Using large recorded tactile data alone, the model classified different grasp/posture types with about 89.4% accuracy</li>
+</ul>
+<h2 id="tactile-sensor-characteristics-and-manufacturing"><strong>Tactile Sensor Characteristics and Manufacturing</strong></h2>
+<p>The glove consists of 548 tactile sensors and the 64 electrodes (64 wires) attached on top of a custom knit glove (it only have 548 sensors due to the area in hand shape, so some sensors are cut off). This sensor array consists of a <strong>force-sensitive film (FSF)</strong> (0.1 mm thick) addressed by a network of <strong>orthogonal conductive threads</strong> (0.34 mm) on each side, insulated by <strong>a thin both side adhesive</strong> (0.13 mm) and a <strong>low-density polyethylene (LDPE) film</strong> (about 13 μm)</p>
+<p align="center">
+<img  src="image-1.png" width="500">
+<img  src="image-13.png" width="300">
+</p>
+<p><strong>Sensor laminate manufacturing process in detail:</strong></p>
+<ol>
+<li>Sensing laminate attached to a light, custom-knit glove</li>
+<li>FSF is cut by laser when placed in a acrylic board</li>
+<li>3-ply stainless steel conductive threads then are sewn with a needle on either side of the FSF</li>
+<li>Two-sided acrylic adhesive tape   on both sides to fix the position of electrode</li>
+<li>Finally, two exposed sides of the adhesive are insulated with a thin, stretchable polybutylene-coated LDPE film</li>
+<li>Exposed conductive threads are coated with a polydimethylsiloxane mixture on hot plate to insulate to prevent short circuit and enhance the mechanical stress while operating</li>
+</ol>
+<!-- **Working Principle**
+Each sensor is composed of:
+- conductive threads (arranged as rows and columns),
+- Force-Sensitive Film (FSF, Velostat) as the sensing layer
+- LDPE film and adhesive layers for insulation and mechanical support. -->
+<p><strong>Working principle of FSF (Force Sensitive Film)</strong></p>
+<p align="center">
+<img  src="image-2.png" width="300">
+<img  src="image-9.png" width="200">
+</p>
+<p>Force-sensitive film works by using the change in resistance of a specific polymer to detect the force applied to the film. Inside the polymer, there are conductive particles dispersed within a non-conductive polymer matrix. When force is applied to the surface of the film, which also acts as the electrodes, the distance between the conductive particles decreases. This reduces the resistance between the two electrodes. Based on this principle, the applied force can be measured by monitoring the resistance and a reference voltage.</p>
+<h2 id="experiments-method-and-results"><strong>Experiments Method and Results</strong></h2>
+<!-- General objective here is to learn from successful human interactions with objects, which are typical of daily interactions. Therefore, the STAG prototype was used to record single hand manipulation of 26 different common objects with a few different sizes, weights and materials
+**Visually aware** allows us to record human interactions with a constant level of awareness of the object at each frame. Each object was manipulated for 3–5 min at a time and included several different grasps and touch sequences.One additional task was performed without any object as an empty hand control -->
+<!-- **Blindfolded conditions**articulating the hand without interacting with any object. -->
+<h3 id="object-identification-task"><strong>Object Identification Task</strong></h3>
+<p><strong>Dataset Collection</strong>:
+<strong>Method:</strong> For object recognition, the authors use a modified <strong>ResNet-18 CNN</strong> (1 initial convolution layer + 16 convolution layers inside the residual blocks + 1 final fully connected layer) to identify 26 objects. Since the tactile input is only 32 × 32, they reduce the initial kernel size and stride so the network better matches the spatial scale of the tactile signal. They also use dropout and noise augmentation to reduce overfitting.</p>
+<p align="center">
+<img  src="image-8.png" height="200">
+<img  src="image-14.png" height="200">
+</p>
+<ul>
+<li><strong>32 × 32 pressure map:</strong> raw tactile image</li>
+<li><strong>3 × 3 convolution:</strong> detect small local tactile patterns</li>
+<li><strong>Batch norm + ReLU:</strong> stabilize and add nonlinearity</li>
+<li><strong>Max pooling:</strong> reduce resolution, keep important responses</li>
+<li><strong>ResNet blocks:</strong> learn more abstract tactile/grasp features</li>
+<li><strong>Dropout:</strong> reduce overfitting</li>
+<li><strong>Shared branches:</strong> process each frame the same way</li>
+<li><strong>Concatenation:</strong> gather evidence from multiple frames</li>
+<li><strong>1 × 1 convolution:</strong> fuse information across frames</li>
+<li><strong>Average pooling:</strong> summarize the whole feature map (128 input feature like a evidence: for fingertip contact, thumb involvement, palm support...)</li>
+<li><strong>Fully connected layer:</strong> output object class scores (27 class includes 26 object and 1 empty hand)</li>
+</ul>
+<blockquote>
+<p>An important design choice is that the model can take N tactile frames from a single interaction instead of just one. Each frame goes through the same CNN branch, and the features are combined before classification. The idea is that different grasps of the same object provide complementary tactile information.</p>
+</blockquote>
+<p><strong>Result</strong>: The classification accuracy increases as the number of input frames N increases, reaching its best performance at about 7 input frames. This makes sense: multiple tactile contacts provide more information about the object than a single grasp snapshot. Figure 2b shows both Top-1 and Top-3 accuracy improving with N.</p>
+<!-- <img  src="image-3.png" width="200"> -->
+<p align="center">
+<img  src="image-3.png" width="150">
+<img  src="image-12.png" width="450">
+</p>
+<p>The confusion matrices show that: light or small objects such as the spoon, coin, and safety glasses are harder to classify, larger and heavier objects with more distinct tactile signatures, such as the tea box, are easier to identify, objects with similar size, shape, or weight are more likely to be confused.
+The examples in Figure 2c also show that the same object can be easier or harder to identify depending on the grasp. For example: a mug is easier to recognize when grasped by the handle than from the side, a pen is easier to identify when it contacts the palm than when it is only between the fingers. This suggests that the tactile map contains not only local contact information, but also information about hand posture.</p>
+<h3 id="weight-estimation-task"><strong>Weight Estimation Task</strong></h3>
+<p><strong>Method:</strong> For this task, the authors recorded a separate dataset where each object was grasped from above using a standardized multi-finger grasp, so the model could not simply associate a unique grasp with a specific object.</p>
+<p><strong>Leave-one-out setup</strong>: when predicting the weight of one object, that object is excluded from training. This forces the model to generalize to unseen objects.
+Pipeline is roughly:</p>
+<blockquote>
+<p>One tactile frame in <strong>➜</strong>  CNN extracts features <strong>➜</strong>  Fully connected layer outputs a single predicted weight.</p>
+</blockquote>
+<p align="center">
+<img  src="image-6.png" width="500">
+</p>
+<p><strong>Results:</strong> The CNN achieves an average prediction error of about <strong>56.88 g</strong>, a simple linear baseline gives about <strong>89.68 g</strong> error. This result shows that weight estimation from tactile maps is possible, but the relationship is <strong>nonlinear</strong>. It <strong>depends</strong> not only on total force, but also on <strong>hand articulation</strong>, <strong>friction</strong>, and <strong>anti-slip forces</strong>. The CNN captures some of that structure better than a naive linear model.</p>
+<h3 id="correlations-across-the-hand"><strong>Correlations across the hand</strong></h3>
+<p><strong>Analyzing the “signatures” of human grasp</strong>: By subtracting the pre-contact frame from the post-contact frame to obtain decomposed object-related signal, separate:</p>
+<ul>
+<li>The hand pose signal: a frame just before contact, treated as hand pose only,</li>
+<li>The object-related pressure signal: frames after contact, treated as object interaction frames.</li>
+</ul>
+<p>Using the decomposed object-related signal, the authors compute: Pearson correlations between individual sensors, canonical correlations between larger hand regions.</p>
+<p align="center">
+<img  src="image-7.png" width="450">
+</p>
+<p><strong>Results</strong> in Figure 3b and 3c show that:</p>
+<ul>
+<li>Fingertips are strongly correlated with the thumb base,This is consistent with the classic precision grip</li>
+<li>Distal phalanges of the major fingers often work together with the thumb to generate gripping force</li>
+<li>The palm becomes more involved in grasps where the object contacts a larger hand</li>
+</ul>
+<!-- ## Learning Model: Deep Learning Approach -->
+<!-- 
+- **Problem: Paper giải quyết vấn đề gì?**
+  - giai quyet van de ve tactile system that could not thin and dense enough to record the real sense of human's hand grasping
+- **Method: Họ làm bằng cách nào?**
+  - develop a glove that have a lot of tactile sensor element
+  - record a huge dataset in grasping a set of object to train a CNN model to identify object, and predict the weight of objects
+- **Result: Kết quả ra sao?**
+  - they find the relationship and corespondence of fingers
+  - the  prediction is great in indentifying object
+  - the weight prediction is better in comparation with the linear model
+- **Contribution: Đóng góp mới là gì?**
+  - scalarable dense tactile sensor glove  -->
+<p><strong>Hand Gesture Prediction</strong></p>
+<p align="center">
+<img  src="image-10.png" width="200">
+<img  src="image-11.png" height="200">
+</p>
+<p>The authors tested whether the glove contains enough proprioceptive information to recognize different hand configurations. They selected seven grasp/hand poses from a grasp taxonomy, plus an empty-hand pose, and recorded tactile maps while the subject articulated those poses. After filtering, they trained the same CNN architecture on these tactile maps and found that the model could classify the poses with about <strong>89.4% accuracy</strong>.</p>
+<h3 id="other-experiments">Other Experiments</h3>
+<p>Hytersis experiment
+Temperature experiment
+Auxetic prototype
+ResNet-18 trained on the ImageNet
+over multiple cycles</p>
+<h2 id="possible-improvements-and-personal-comment"><strong>Possible Improvements and Personal Comment</strong></h2>
+<p>This work is very strong, but several aspects could still be improved. The system measures only normal force and does not capture shear forces, even though shear is often important in stable grasping and slip detection. In addition, the human hand can also sense other modalities such as temperature, which are not included in this tactile glove.</p>
+<blockquote>
+<p>force on sensor → resistance change → amplifier output voltage → ADC value → tactile map</p>
+</blockquote>
+<!-- cos theer cho them video vao de co the show cho moi nguoơ xem
+Polyimide giỏi ở “flex” kiểu uốn, nhưng không giỏi ở stretch/compliance đa hướng như kiến trúc dùng LDPE + adhesive mềm.
+Cho nên nếu dán trên bề mặt phẳng hoặc array cố định thì polyimide ổn. Nhưng với glove full-hand, vật liệu mềm hơn sẽ hợp hơn.
+
+“Dropout randomly disables a subset of neurons during training, forcing the network to learn more robust and independent features. This reduces overfitting and improves generalization.”
+
+“Dropout randomly disables a subset of neurons during training, forcing the network to learn more robust and independent features. This reduces overfitting and improves generalization.”
+“SPDT stands for Single Pole Double Throw. The 32 SPDT switches are used for multiplexing, allowing the system to select different sensor lines for sequential readout.”
+“A 32-to-1 analog switch is a multiplexer that selects one of 32 analog input signals and routes it to a single output for measurement.”
+
+ResNet-18 is a residual convolutional neural network with skip connections. These connections let the model learn residual features instead of full transformations, which improves gradient flow and enables stable training of deep networks.
+
+“The Weber fraction measures relative error, which aligns with human perception, as humans are more sensitive to proportional changes rather than absolute differences in weight.”
+
+“The authors show that most of the variance in tactile data is caused by hand pose rather than object properties. However, the CNN is still able to extract object-related information by learning features that are invariant to pose.”
+
+“The linear model is used as a baseline to demonstrate that the task cannot be solved with simple linear relationships. By comparing against it, the authors show that capturing nonlinear spatial patterns is essential, which justifies the use of CNNs.”
+
+“The goal is not to benchmark all models, but to show that linear assumptions are insufficient. Once that is established, CNN becomes a natural choice due to the spatial structure of tactile data.”
+
+“Tactile data is inherently nonlinear because contact mechanics, friction, and hand-object interactions create complex, coupled pressure patterns that cannot be described by simple linear combinations of sensor readings.”
+
+“While other architectures such as DenseNet, EfficientNet, or Vision Transformers could also be used, ResNet-18 provides a strong balance between performance, stability, and computational efficiency, making it a suitable choice for this tactile sensing task.” -->
+
+</body>
+</html>
